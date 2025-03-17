@@ -14,8 +14,12 @@ import java.util.List;
 public class BookController {
   private final BookService bookService;
 
+  //첨부파일(도서 이미지)업로드
+
+
   //도서 등록
   @PostMapping("")
+  //Book 테이블에 데이터 INSERT
   public void insertBook(@RequestBody BookDTO bookDTO){
     bookService.insertItem(bookDTO);
   }
