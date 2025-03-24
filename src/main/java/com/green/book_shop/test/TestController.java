@@ -34,7 +34,7 @@ public class TestController {
   //첨부파일 연습1
   @PostMapping("/upload1")
   public void upload1(@RequestParam(name = "firstFile", required = false) MultipartFile multipartFile){
-
+                                    //name은 받아오는 파일명과 똑같이 required = true는 필수 삽입 , false는 넣어도 되고 안넣어도 되고
     uploadUtil.fileUpload(multipartFile);
   }
 
