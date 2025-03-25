@@ -5,6 +5,8 @@ import lombok.Setter;
 import lombok.ToString;
 
 import java.time.LocalDateTime;
+import java.util.List;
+import java.util.PrimitiveIterator;
 
 @ToString
 @Getter
@@ -18,4 +20,6 @@ public class BookDTO {
   private LocalDateTime regDate;
   private int bookStock;
   private int cateCode;
+  private List<ImgDTO> imgList;
+  //1대N관계
 }

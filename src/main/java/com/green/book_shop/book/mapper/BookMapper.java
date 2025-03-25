@@ -2,6 +2,7 @@ package com.green.book_shop.book.mapper;
 
 import com.green.book_shop.book.dto.BookCategoryDTO;
 import com.green.book_shop.book.dto.BookDTO;
+import com.green.book_shop.book.dto.ImgDTO;
 import org.apache.ibatis.annotations.Mapper;
 
 import java.util.List;
@@ -27,6 +28,15 @@ public interface BookMapper {
   //카테고리 삭제
   public void deleteCate(int cateCode);
 
+  //도서 이미지 등록
+  //public void insertImgs(List<ImgDTO> imgList);
+  //근데 bookDTO안에 어차피 ImgList가 있다
+  //그래서 빈값을 bookDTO로 채우겠다.
+  public void insertImgs(BookDTO bookDTO);
+
+
+  //도서를 등록할떄마다 BOOK_CODE를 지정(조회)
+  public int getNextBookCode();
 
   public List<BookDTO> getBooks();
 }

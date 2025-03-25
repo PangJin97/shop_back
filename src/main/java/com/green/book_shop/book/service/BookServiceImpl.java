@@ -58,6 +58,18 @@ public class BookServiceImpl implements BookService {
     bookMapper.deleteCate(cateCode);
   }
 
+  //도서 이미지 등록
+  @Override
+  public void insertImgs(BookDTO bookDTO) {
+    bookMapper.insertImgs(bookDTO);
+  }
+
+  //파일을 업로드할때마다 bookCode지정
+  @Override
+  public int getNextBookCode() {
+    return bookMapper.getNextBookCode();
+  }
+
   @Override
   public List<BookDTO> getBooks() {
     return bookMapper.getBooks();

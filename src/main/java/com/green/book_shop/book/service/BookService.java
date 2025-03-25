@@ -28,5 +28,11 @@ public interface BookService {
   /*카테고리 삭제*/
   public void deleteCate(int cateCode);
 
+  //도서이미지 등록
+  public void insertImgs(BookDTO bookDTO);
+
+  //도서를 등록할때마다 bookCode지정
+  public int getNextBookCode();
+
   public List<BookDTO> getBooks();
 }

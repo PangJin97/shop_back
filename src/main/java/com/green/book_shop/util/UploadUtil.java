@@ -20,34 +20,32 @@ public class UploadUtil {
   private String uploadPath;
 
   //단일 파일 업로드
-  public void fileUpload(MultipartFile multipartFile) {
+  public String fileUpload(MultipartFile multipartFile) {
+      //파일을 첨부했을 때만 첨부 기능 실행
+      if(multipartFile != null){
+        //multipartFile : 원본파일
+        //multipartFile.getOriginalFilename()
+        //화면에서 선택한 원본 파일 명
+        String originFileName = multipartFile.getOriginalFilename();
 
-    //파일을 첨부하지 않았다면.....
-    if (multipartFile == null) {
-      return; //메서드 종료
-    }
-    //첨부파일을 보내지않으면 원본파일이 없으니 null이 할당됨
-
-
-    //multipartFile : 원본파일
-    //multipartFile.getOriginalFilename()
-    //화면에서 선택한 원본 파일 명
-    String originFileName = multipartFile.getOriginalFilename();
-
-    //첨부될 파일명
-    String attachFileName = getAttachedFileName(originFileName);
-    //첨부하는 원본 파일 -> 첨부실행 -> 첨부될 파일
-    //통상적으로 중복이 안되게 억지로 바꿔서 넣음(원본 파일과 첨부될 파일이 중복 안되게)
+        //첨부될 파일명
+        String attachFileName = getAttachedFileName(originFileName);
+        //첨부하는 원본 파일 -> 첨부실행 -> 첨부될 파일
+        //통상적으로 중복이 안되게 억지로 바꿔서 넣음(원본 파일과 첨부될 파일이 중복 안되게)
 
 
-    //업로드 경로, 파일명을 연결
-    File f = new File(uploadPath + attachFileName);
+        //업로드 경로, 파일명을 연결
+        File f = new File(uploadPath + attachFileName);
 
-    try {
-      multipartFile.transferTo(f);
-    } catch (IOException e) {
-      throw new RuntimeException(e);
-    }
+        try {
+          multipartFile.transferTo(f);
+        } catch (IOException e) {
+          throw new RuntimeException(e);
+        }
+        return attachFileName;
+      }
+      return null;
+      //첨부한 파일이 없으면 null을 리턴
   }
 
 
