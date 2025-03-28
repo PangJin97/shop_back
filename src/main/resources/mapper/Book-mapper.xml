@@ -90,6 +90,15 @@
         ORDER BY CATE_CODE
     </select>
 
+    <!--도서 카테고리 상세 조회-->
+    <select id="getCateGoryByCateCode" resultMap="bookCategory">
+        SELECT CATE_CODE
+        ,CATE_NAME
+        FROM BOOK_CATEGORY
+        WHERE CATE_CODE = #{cateCode}
+    </select>
+
+
     <!--카테고리명 중복확인-->
     <select id="isUsableCateName" resultType="String">
         SELECT CATE_NAME

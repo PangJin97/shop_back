@@ -39,4 +39,6 @@ public interface BookMapper {
   public int getNextBookCode();
 
   public List<BookDTO> getBooks();
+
+  public BookCategoryDTO getCateGoryByCateCode(int cateCode);
 }

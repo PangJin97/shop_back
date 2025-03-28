@@ -74,4 +74,10 @@ public class BookServiceImpl implements BookService {
   public List<BookDTO> getBooks() {
     return bookMapper.getBooks();
   }
+
+  //카테고리 상세 조회(연습용)
+  @Override
+  public BookCategoryDTO getCateGoryByCateCode(int cateCode) {
+    return bookMapper.getCateGoryByCateCode(cateCode);
+  }
 }

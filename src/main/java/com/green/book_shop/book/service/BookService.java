@@ -35,4 +35,6 @@ public interface BookService {
   public int getNextBookCode();
 
   public List<BookDTO> getBooks();
+
+  public BookCategoryDTO getCateGoryByCateCode(int cateCode);
 }
