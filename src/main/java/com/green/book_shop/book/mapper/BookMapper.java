@@ -38,6 +38,7 @@ public interface BookMapper {
   //도서를 등록할떄마다 BOOK_CODE를 지정(조회)
   public int getNextBookCode();
 
+  //도서목록조회
   public List<BookDTO> getBooks();
 
   public BookCategoryDTO getCateGoryByCateCode(int cateCode);

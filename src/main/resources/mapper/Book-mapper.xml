@@ -8,7 +8,7 @@
 <mapper namespace="com.green.book_shop.book.mapper.BookMapper">
 
     <resultMap id="book" type="BookDTO">
-        <result column="BOOK_CODE"  property="bookCode" />
+        <id     column="BOOK_CODE"  property="bookCode" />
         <result column="BOOK_NAME"  property="bookName" />
         <result column="BOOK_PRICE" property="bookPrice" />
         <result column="PUBLISHER"  property="publisher" />
@@ -16,11 +16,26 @@
         <result column="REG_DATE"   property="regDate" />
         <result column="BOOK_STOCK" property="bookStock" />
         <result column="CATE_CODE"  property="cateCode" />
+
+        <!--책과 이미지는 1대N관계-->
+        <collection property="imgList" resultMap="bookImg" />
     </resultMap>
 
+    <resultMap id="bookImg" type="ImgDTO">
+        <id     column="IMG_CODE"  property="imgCode" />
+        <result column="ORIGIN_FILE_NAME"  property="originFileName" />
+        <result column="ATTACHED_FILE_NAME" property="attachedFileName" />
+        <result column="IS_MAIN"  property="isMain" />
+        <result column="BOOK_CODE"  property="bookCode" />
+    </resultMap>
+
+    <!--목록조회-->
     <select id="getBooks" resultMap="book">
-        SELECT BOOK_NAME, BOOK_PRICE, BOOK_CODE
-        FROM BOOK;
+        SELECT BOOK_NAME, BOOK_PRICE, B.BOOK_CODE, ATTACHED_FILE_NAME
+        FROM BOOK B INNER JOIN BOOK_IMG I
+        ON B.BOOK_CODE = I.BOOK_CODE
+        WHERE IS_MAIN = "Y"
+        ORDER BY REG_DATE DESC
     </select>
 
     <!--resultMap : 쿼리 결과 데이터를 자바로 가져올 형태를 구성-->

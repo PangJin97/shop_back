@@ -34,6 +34,7 @@ public interface BookService {
   //도서를 등록할때마다 bookCode지정
   public int getNextBookCode();
 
+  //도서 목록 조회
   public List<BookDTO> getBooks();
 
   public BookCategoryDTO getCateGoryByCateCode(int cateCode);

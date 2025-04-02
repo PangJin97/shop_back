@@ -6,6 +6,8 @@ import com.green.book_shop.book.dto.ImgDTO;
 import com.green.book_shop.book.service.BookService;
 import com.green.book_shop.util.UploadUtil;
 import lombok.RequiredArgsConstructor;
+import org.springframework.http.HttpStatus;
+import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.multipart.MultipartFile;
 
@@ -106,8 +108,10 @@ public class BookController {
 
   //도서 목록 조회
   @GetMapping("")
-  public List<BookDTO> getBooks(){
-    return bookService.getBooks();
-  }
+  public ResponseEntity<?> getBooks(){
 
+    List<BookDTO> bookList = bookService.getBooks();
+
+    return ResponseEntity.status(HttpStatus.OK).body(bookList);
+  }
 }

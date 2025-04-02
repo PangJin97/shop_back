@@ -70,6 +70,7 @@ public class BookServiceImpl implements BookService {
     return bookMapper.getNextBookCode();
   }
 
+  //도서목록조회
   @Override
   public List<BookDTO> getBooks() {
     return bookMapper.getBooks();
